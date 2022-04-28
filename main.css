@@ -23,17 +23,17 @@ li {
     font-family: monospace;
 }
 .light-theme {
-    --bg: var(--green);
+    --bg: var(--white);
     --fontColor: var(--black);
     --btnBg: var(--black);
     --btnFontColor: var(--white);
 }
-.dark-theme {
+/*.dark-theme {
     --bg: var(--black);
     --fontColor: var(--green);
     --btnBg: var(--white);
     --btnFontColor: var(--black);
-}
+}*/
 .btn {
     position: absolute;
     top: 20px;
