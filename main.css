@@ -1,44 +1,18 @@
 :root {
-    --green: #0f0;
+    --green: #04AA6D;
     --white: #fff;
     --black: #000;
+    --red: #ff0000;
 }
 * {
-    color: var(--fontColor);
+    color: var(--black);
     font-family: helvetica;
 }
 body {
-    background: var(--bg);
+    background: white;
 }
-
-.light-theme {
-    --bg: var(--white);
-    --fontColor: var(--black);
-    --btnBg: var(--black);
-    --btnFontColor: var(--white);
-}
-.dark-theme {
-    --bg: var(--black);
-    --fontColor: var(--green);
-    --btnBg: var(--white);
-    --btnFontColor: var(--black);
-}
-.btn {
-    position: absolute;
-    top: 20px;
-    left: 250px;
-    height: 50px;
-    width: 50px;
-    border-radius: 50%;
-    border: none;
-    color: var(--btnFontColor);
-    background-color: var(--btnBg);
-}
-.btn:focus { outline-style: none; }
 
 /*{box-sizing: border-box;}*/
-
-
 
 .openForm-btn {
     background-color: #555;
@@ -77,8 +51,8 @@ body {
     outline: none;
 }
 .form-container .submit-btn {
-  background-color: #04AA6D;
-  color: white;
+  background-color: var(--green);
+  color: var(--white);
   padding: 16px 20px;
   border: none;
   cursor: pointer;
@@ -87,8 +61,8 @@ body {
   opacity: 0.8;
 }
 .form-container .cancel-btn {
-    background-color: red;
-    color: white;
+    background-color: var(--red);
+    color: var(--white);
     padding: 16px 20px;
     border: none;
     cursor: pointer;
@@ -98,4 +72,23 @@ body {
 }
 .form-container .btn:hover, .open-button:hover {
     opacity: 1;
+}
+
+.navbar {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+.navbar .navbar-element {
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+.navbar .navbar-element:hover {
+    background-color: #111;
 }

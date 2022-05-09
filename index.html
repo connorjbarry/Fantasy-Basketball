@@ -8,10 +8,19 @@
     <link rel="stylesheet" href="main.css">
 </head>
 <body class = "light-theme">
-    <h1>Fantasy Basketball League Hub</h1>
-    
+    <header>
+        <h1>Fantasy Basketball</h1>
+    </header>
+    <nav>
+        <ul class="navbar" >
+            <li class="navbar-element">Home</li>
+            <li class="navbar-element">placeholder</li>
+            <li class="navbar-element">placeholder</li>
+            <li style="float:right"class="navbar-element">About</li>
+        </ul>
+    </nav>
     <div class = "newLeague-popup" id="newLeague-form">
-        <form action="" class='form-container'>
+        <form class='form-container'>
             <h1>New League</h1>
 
             <label for="lName"><b>League Name</b></label>
@@ -23,8 +32,8 @@
             <label for="lPswCon"><b>Confirm Password</b></label>
             <input type="password" placeholder="Confirm Password" name="lPswCon" required>
 
-            <button type="submit" class="submit-btn" onclick="checkLeaguePasswordMatch">Submit</button>
-            <button type="button" class="cancel-btn" onclick="closeForm">Close</button>
+            <button type="submit" class="submit-btn" onclick="checkLeaguePasswordMatch()">Submit</button>
+            <button type="button" class="cancel-btn" onclick="closeForm()">Close</button>
         </form>
     </div>
     <div>

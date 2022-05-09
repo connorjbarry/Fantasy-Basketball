@@ -15,3 +15,5 @@ Top 15 in three point makes per game in tier 1
 Each team selects 3 players in each tier for the whole season.  You have to factor in expected health and improvement / regression from previous season to pick the best team possible.
 
 End of the basketball year, team with the most 3s wins the league.
+
+Authors: Connor Barry and Patrick Barry
