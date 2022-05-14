@@ -10,7 +10,6 @@ closeFormbtn.addEventListener('click', function() {
     closeForm();
 });
 
-//Open and close new league form
 function openForm() {
     document.getElementById("newLeague-form").style.display = "block";
 }
@@ -23,11 +22,12 @@ submitLeague.addEventListener('click', function() {
     checkLeaguePasswordMatch();
 });
 
-//Checks that passwords match
 function checkLeaguePasswordMatch() {
-    const p1 = document.getElementsByName("lPsw");
-    const p2 = document.getElementsByName("lPswCon");
-    if (p1 != p2) {
-        alert("Passwords do not match");
+    const password = document.querySelector('input[name=league-pass]');
+    const confirm = document.querySelector('input[name=league-pass-confirm]');
+    if (confirm.value === password.value) {
+        confirm.setCustomValidity('');
+    } else {
+        confirm.setCustomValidity('Passwords do not match');
     }
 }
