@@ -16,21 +16,22 @@ def httpsRequest(url):
 def getPlayerTotalStats(page):
     parsedPage = BeautifulSoup(page.content, "html.parser")
     teamTotalStats = parsedPage.find(id="totals")
-    playerTotalStats = teamTotalStats.find_all("tr")
+    tempFind = teamTotalStats.find("tbody")
+    playerTotalStats = tempFind.find_all("tr")
     return playerTotalStats
 
 
-def makePlayerDict(playerStats):
-    for i in range(1,len(playerStats)-1):
+def makePlayerDict(playerStats, playerList):
+    for i in range(0,len(playerStats)):
         player_name = playerStats[i].find('td', class_="left")
         player_stats = playerStats[i].find_all('td', class_="right")
         for idx, data in enumerate(player_stats):
             if player_stats[idx].attrs['data-stat'] == 'fg3':
-                threesMade = player_stats[idx].text
+                threesMade = data.text
             elif player_stats[idx].attrs['data-stat'] == 'fg3a':
-                threesAttempted = player_stats[idx].text
+                threesAttempted = data.text
             elif player_stats[idx].attrs['data-stat'] == 'fg3_pct':
-                threesPct = player_stats[idx].text
+                threesPct = data.text
         playerDict = {
             'name' : player_name.text,
             '3PM'  : threesMade,
@@ -42,10 +43,10 @@ def makePlayerDict(playerStats):
 def makeListPlayers(playerList, playerDict):
     playerList.append(playerDict)
 
-page = httpsRequest(url)
-playerStats = getPlayerTotalStats(page)
-makePlayerDict(playerStats)
-print(playerList)
+# page = httpsRequest(url)
+# playerStats = getPlayerTotalStats(page)
+# makePlayerDict(playerStats, playerList)
+# print(playerList)
 
 
 # Parse HTML content from webpage - getPLayerTotalStats()
