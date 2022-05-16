@@ -3,26 +3,74 @@ from bs4 import BeautifulSoup
 
 #Make Functions for most steps
 
+playerList = []
+
+url = "https://www.basketball-reference.com/teams/MIA/2022.html"
 
 #http get request - httpsRequest()
-URL = "https://www.basketball-reference.com/teams/MIA/2022.html"
-homePage = requests.get(URL)
-# def httpsRequest(url):
-#     page = requests.get(url)
-#     return page
+def httpsRequest(url):
+    page = requests.get(url)
+    return page
 
-#Parse HTML content from webpage
-soup = BeautifulSoup(homePage.content, "html.parser")
+# Parse HTML content from webpage - getPLayerTotalStats()
+def getPlayerTotalStats(page):
+    parsedPage = BeautifulSoup(page.content, "html.parser")
+    teamTotalStats = parsedPage.find(id="totals")
+    playerTotalStats = teamTotalStats.find_all("tr")
+    return playerTotalStats
 
-# eastStandings = soup.find_all("tr", class_="full_table")
 
-# team_name = eastStandings[0].find("th", class_="left")
-# print(team_name.text)
-# team_wins = eastStandings[0].find_all("td", class_="right")
-# print(team_wins)
+def makePlayerDict(playerStats):
+    for i in range(1,len(playerStats)-1):
+        player_name = playerStats[i].find('td', class_="left")
+        player_stats = playerStats[i].find_all('td', class_="right")
+        for idx, data in enumerate(player_stats):
+            if player_stats[idx].attrs['data-stat'] == 'fg3':
+                threesMade = player_stats[idx].text
+            elif player_stats[idx].attrs['data-stat'] == 'fg3a':
+                threesAttempted = player_stats[idx].text
+            elif player_stats[idx].attrs['data-stat'] == 'fg3_pct':
+                threesPct = player_stats[idx].text
+        playerDict = {
+            'name' : player_name.text,
+            '3PM'  : threesMade,
+            '3PA'  : threesAttempted,
+            '3P%'  : threesPct
+        }
+        makeListPlayers(playerList, playerDict)
 
-teamTotals = soup.find(id="totals")
-# print(teamTotals)
-playerTotals = teamTotals.find_all("tr")
-# print(playerTotals)
-print(len(playerTotals))
+def makeListPlayers(playerList, playerDict):
+    playerList.append(playerDict)
+
+page = httpsRequest(url)
+playerStats = getPlayerTotalStats(page)
+makePlayerDict(playerStats)
+print(playerList)
+
+
+# Parse HTML content from webpage - getPLayerTotalStats()
+# soup = BeautifulSoup(page.content, "html.parser")
+# teamTotals = soup.find(id="totals")
+# playerTotals = teamTotals.find_all("tr")
+# for i in range(1,len(playerTotals)-1):
+    # player_name = playerTotals[i].find('td', class_="left")
+    # print(player_name.text)
+    # player_stats = playerTotals[i].find_all('td', class_="right")
+    # print(player_stats)
+    # print(player_stats[0].attrs)
+    # for idx, data in enumerate(player_stats):
+        # if player_stats[idx].attrs['data-stat'] == 'fg3':
+            # threesMade = player_stats[idx].text
+        # elif player_stats[idx].attrs['data-stat'] == 'fg3a':
+            # threesAttempted = player_stats[idx].text
+        # elif player_stats[idx].attrs['data-stat'] == 'fg3_pct':
+            # if player_stats[idx].text == '':
+                # player_stats[idx].text = 0
+            # threesPct = player_stats[idx].text
+    # playerDict = {
+        # 'name' : player_name.text,
+        # '3PM'  : threesMade,
+        # '3PA'  : threesAttempted,
+        # '3P%'  : threesPct
+    # }
+    # playerList.append(playerDict)    
