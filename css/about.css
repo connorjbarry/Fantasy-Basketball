@@ -1,1 +1,42 @@
 @import "main.css";
+
+.site-description {
+    width: 90%;
+    height: 600px;
+    padding: 10px;
+    border: 2px;
+    border-image: linear-gradient(to right, lightpink, #f24545);
+    border-radius: 50px;
+    margin: 5rem auto;
+}
+.site-description{
+    background-image: linear-gradient(to right, lightpink, #f24545);
+}
+.site-description .description {
+    text-align: center;
+    word-break: break-all;
+    white-space: normal;
+}
+.author-description {
+    display: flex;
+}
+.cb-description{
+    width: 25rem;
+    height: 30rem;
+    border: 2px solid red;
+    border-radius: 25px;
+    padding: 10px;
+    margin-left: 5rem;
+}
+
+.pb-description{
+    width: 25rem;
+    height: 30rem;
+    border: 2px solid red;
+    border-radius: 25px;
+    padding: 10px;
+    margin-right: 5rem;
+    position: absolute;
+    right: 0;
+}
+
