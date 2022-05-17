@@ -15,3 +15,5 @@ for url in allURLs:
     makePlayerDict(playerStats, allPlayers3PTstats)
     time.sleep(5)
 print(allPlayers3PTstats)
+
+# TODO - separate list of dictionaries into individual list of each stat to expedite database entry.
