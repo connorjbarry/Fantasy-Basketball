@@ -1,10 +1,16 @@
 class Player:
-    def __init__(self, name, team, threeM, threeA, threePct) -> None:
+    last_id = 0
+    def __init__(self, id, name, team, threeM, threeA, threePct) -> None:
+        self.id = Player.last_id + 1
+        Player.last_id = self.id
         self.name = name
         self.team = team
         self.threesMade = threeM
         self.threesAtt = threeA
         self.threePct = threePct
+
+    def getId(self):
+        return self.id
 
     def getName(self):
         return self.name
@@ -22,4 +28,4 @@ class Player:
         return self.threePct
     
     def getPlayer(self):
-        return [self.name, self.team, self.threesMade, self.threesAtt, self.threePct]
+        return [self.id, self.name, self.team, self.threesMade, self.threesAtt, self.threePct]
