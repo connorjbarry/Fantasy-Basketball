@@ -33,7 +33,7 @@ def makePlayer(playerStats, playerList, team):
             elif player_stats[idx].attrs['data-stat'] == 'fg3_pct':
                 threesPct = data.text
 
-        player = Player(player_name.text, team, threesMade, threesAttempted, threesPct)
+        player = Player(None, player_name.text, team, threesMade, threesAttempted, threesPct)
 
         makeListPlayers(playerList, player)
 

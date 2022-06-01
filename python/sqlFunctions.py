@@ -26,7 +26,7 @@ def execute_query(connection, query):
 def execute_list_query(connection, sql, val):
     cursor = connection.cursor()
     try:
-        cursor.execute(sql,val)
+        cursor.executemany(sql,val)
         connection.commit()
         print("Query Successful")
     except Error as err:
